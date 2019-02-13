@@ -39,22 +39,29 @@ new Vue({
 		// 	})
 		// },
 		checkAll() {
-		 	
+		 	//this.checkAllFlag = !this.checkAllFlag
 		 	// this.cartList.forEach((item,index)=>{
-		 	// 	if(!item.checked){
+			// 	  if (typeof item.checked == 'undefined'){
 		 	// 		this.$set(item,"checked",!this.checkAllFlag)
 		 	// 	}else{
 			// 		    item.checked = !this.checkAllFlagB;
-			// 		    console.log(11)
+					   
+			// 		    console.log(item.checked)
 		 	// 	}
-			 // })
-			 for(let i=0;i<this.cartList.length;i++){
-				 if(!this.cartList[i].checked){
+			//  })
+			 for(var i=0;i<this.cartList.length;i++){
+				 if (typeof this.cartList[i].checked == "undefined") {
 					 this.$set(this.cartList[i],"checked",!this.checkAllFlag)
 				 }else{
+					
 					 this.cartList[i].checked = !this.checkAllFlagB;
+					 //this.$set(this.cartList[i], "checked", !this.checkAllFlagB)
+					 //console.log(this)
+				
 				 }
 			 }
+			 this.calcTotalMoney()
+			 console.log(this.checkAllFlag)
 		 },
 		
 		selectGoods(item){
@@ -77,10 +84,12 @@ new Vue({
 		},
 
 		calcTotalMoney(){
+			this.totalMoney = 0;
 			this.cartList.forEach((item,index)=>{
 				if(item.checked){
 					this.totalMoney += item.productQuantity*item.productPrice
 				}
+				console.log(item.checked)
 			})
 		},
 		
