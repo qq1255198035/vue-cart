@@ -39,29 +39,17 @@ new Vue({
 		// 	})
 		// },
 		checkAll() {
-		 	//this.checkAllFlag = !this.checkAllFlag
-		 	// this.cartList.forEach((item,index)=>{
-			// 	  if (typeof item.checked == 'undefined'){
-		 	// 		this.$set(item,"checked",!this.checkAllFlag)
-		 	// 	}else{
-			// 		    item.checked = !this.checkAllFlagB;
-					   
-			// 		    console.log(item.checked)
-		 	// 	}
-			//  })
-			 for(var i=0;i<this.cartList.length;i++){
-				 if (typeof this.cartList[i].checked == "undefined") {
-					 this.$set(this.cartList[i],"checked",!this.checkAllFlag)
-				 }else{
-					
-					 this.cartList[i].checked = !this.checkAllFlagB;
-					 //this.$set(this.cartList[i], "checked", !this.checkAllFlagB)
-					 //console.log(this)
-				
-				 }
-			 }
+			this.checkAllFlag = !this.checkAllFlagB
+		 	this.cartList.forEach((item,index)=>{
+				  if (typeof item.checked == 'undefined'){
+		 			this.$set(item,"checked",this.checkAllFlag)
+		 		}else{
+					item.checked = this.checkAllFlag;	    
+		 		}
+			 })
+			
 			 this.calcTotalMoney()
-			 console.log(this.checkAllFlag)
+			
 		 },
 		
 		selectGoods(item){
